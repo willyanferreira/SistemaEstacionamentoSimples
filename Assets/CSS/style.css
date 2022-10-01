@@ -21,6 +21,7 @@ header h1{
 nav ul#navegacao{
     display: flex;
     justify-content: center;
+    background-color: aqua;
 }
 
 ul#navegacao li{
@@ -30,17 +31,21 @@ ul#navegacao li{
 
 ul#navegacao li span{
     cursor: pointer;
+    background-color: tomato;
+    padding: 0 10px 0 10px;
 }
 
 /* MAIN */
 main{
     display: flex;
+    min-height: 150px;
+    position: relative;
     justify-content: center;
+    align-items: center;
 }
 
 main section{
     padding: 20px;
-    position: relative;
     
 }
 
@@ -65,11 +70,16 @@ section#cadastrarVeiculo button, section#liberarVeiculo button{
     background-color: #98FB98;
     border: 1px solid #90EE90;
     border-radius: 5px;
+    outline: none;
 }
 
 section#cadastrarVeiculo button:hover, section#liberarVeiculo button:hover{
-    background-color: #90EE90;
+    background-color: #3CB371;
     cursor: pointer;
+}
+
+section#cadastrarVeiculo button:focus, section#liberarVeiculo button:focus{
+    background-color: #3CB371;
 }
 
 section#cadastrarVeiculo button:active, section#liberarVeiculo button:active{
@@ -106,7 +116,5 @@ h3 i.fa-solid.fa-x{
 
 /* FOOTER */
 footer{
-    position: absolute;
-    bottom: 0;
-    left: 25%;
+    text-align: center;
 }
