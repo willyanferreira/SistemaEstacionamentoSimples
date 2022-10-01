@@ -15,19 +15,34 @@ if (localStorage.length == 0 ) {
     }
 }
 
+const MSG_SECTION_CADASTRAR = document.getElementById('msgCadastrar');
+const MSG_SECTION_LIBERAR = document.getElementById('msgLiberar');
+
+function removeAvisoSpan(){
+    document.getElementById('msgCadastrar').style.display = 'none';
+}
+
 function CadastrarVeiculo() {
 
     if (PLACAS.includes(PLACA.value.toUpperCase())) {
-        console.log('Veículo já cadastrado');
+        MSG_SECTION_CADASTRAR.style.display = 'block';
+        MSG_SECTION_CADASTRAR.innerHTML = 'Veículo já cadastrado';
+        setTimeout(removeAvisoSpan, 2000);
     } else if (PLACA.value == "") {
-        console.log("Digite uma placa");
+        MSG_SECTION_CADASTRAR.style.display = 'block';
+        MSG_SECTION_CADASTRAR.innerHTML = 'Digite uma placa';
+        setTimeout(removeAvisoSpan, 2000);
     } else if (PLACA.value.length != 7) {
-        console.log("Placa inválida");
+        MSG_SECTION_CADASTRAR.style.display = 'block';
+        MSG_SECTION_CADASTRAR.innerHTML = 'Placa inválida';
+        setTimeout(removeAvisoSpan, 2000);
     } else {
         PLACAS.push(PLACA.value.toUpperCase());
         localStorage.setItem('placas', PLACAS);
-        console.log(localStorage);
         PLACA.value = "";
+        MSG_SECTION_CADASTRAR.style.display = 'block';
+        MSG_SECTION_CADASTRAR.innerHTML = 'veículo cadastrado com sucesso';
+        setTimeout(removeAvisoSpan(), 2000);
     }
 
 }
