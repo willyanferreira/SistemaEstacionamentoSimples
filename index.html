@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Estacionamento</title>
+    <link rel="stylesheet" href="Assets/CSS/style.css">
+</head>
+<body>
+    <header id="sistemaEstacionamento">
+        <h1>Sistema de Estacionamento Simples</h1>
+    </header>
+    <nav>
+        <ul id="navegacao">
+            <li><span class="listaNavegacao">Cadastrar</span></li>
+            <li><span class="listaNavegacao">Liberar</span></li>
+            <li>
+                <span class="listaNavegacao">Exibir</span>
+                <!-- <i class="fa-solid fa-play" onclick="ExibirVeiculos()"></i> -->
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <section id="cadastrarVeiculo">
+            <label for="cadastrar">Cadastrar veículo</label>
+                <input type="text" id="cadastrar" placeholder="Digite a placa do veículo">
+                <button type="button" onclick="CadastrarVeiculo()">Cadastrar</button>
+        </section>
+        <section id="liberarVeiculo">
+            <label for="remover">Liberar veículo</label>
+            <input type="text" id="remover" placeholder="Digite a placa do veículo">
+            <button type="button" onclick="RemoverVeiculo()">Liberar</button>
+        </section>
+        <section id="exibirVeiculo">
+                <h3>Veículos cadastrados<i class="fa-solid fa-x" onclick="OcultarVeiculos()"></i></h3> 
+            <ul id="exibirVeiculos"></ul>
+        </section>
+    </main>
+    <footer>
+        <h1>Carlos FDSS, Willyan</h1>
+    </footer>
+
+    <!-- scripts -->
+    <script src="Assets/JS/main.js" defer></script>
+    <script src="https://kit.fontawesome.com/a9531409d3.js" crossorigin="anonymous"></script>
+</body>
+</html>
