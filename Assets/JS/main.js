@@ -54,10 +54,11 @@ function ExibirVeiculos(){
     for(let x = 0; x < PLACAS.sort().length; x++){
         LISTAR_PLACAS.innerHTML += `<li>${PLACAS[x]}</li>`;
     }
-    LISTAR_PLACAS.style.display = 'block';
+    // LISTAR_PLACAS.style.display = 'block';
 }
 
 function OcultarVeiculos(){
+    LISTA_NAVEGACAO[2].style.background = '#363636';
     document.getElementById('exibirVeiculo').style.display='none';
 }
 
@@ -96,16 +97,34 @@ const LISTA_NAVEGACAO = document.getElementsByClassName('listaNavegacao');
 for(let x = 0; x < LISTA_NAVEGACAO.length; x++){
     LISTA_NAVEGACAO[x].addEventListener('click', () => {
         if(LISTA_NAVEGACAO[x].innerHTML == 'Cadastrar'){
+            LISTA_NAVEGACAO[1].style.background = '#363636';
+            LISTA_NAVEGACAO[2].style.background = '#363636';
+            LISTA_NAVEGACAO[x].style.background = 'linen';
+            LISTA_NAVEGACAO[1].style.borderBottom = '1px solid #363636';
+            LISTA_NAVEGACAO[2].style.borderBottom = '1px solid #363636';
+            LISTA_NAVEGACAO[x].style.borderBottom = '1px solid linen';
             document.getElementById('liberarVeiculo').style.display='none';
             document.getElementById('exibirVeiculo').style.display='none';
             document.getElementById('cadastrarVeiculo').style.display='flex';
         }
         if(LISTA_NAVEGACAO[x].innerHTML == 'Liberar'){
+            LISTA_NAVEGACAO[0].style.background = '#363636';
+            LISTA_NAVEGACAO[2].style.background = '#363636';
+            LISTA_NAVEGACAO[x].style.background = 'linen';
+            LISTA_NAVEGACAO[0].style.borderBottom = '1px solid #363636';
+            LISTA_NAVEGACAO[2].style.borderBottom = '1px solid #363636';
+            LISTA_NAVEGACAO[x].style.borderBottom = '1px solid linen';
             document.getElementById('cadastrarVeiculo').style.display='none';
             document.getElementById('exibirVeiculo').style.display='none';
             document.getElementById('liberarVeiculo').style.display='flex';
         }
         if(LISTA_NAVEGACAO[x].innerHTML == 'Exibir'){
+            LISTA_NAVEGACAO[0].style.background = '#363636';
+            LISTA_NAVEGACAO[1].style.background = '#363636';
+            LISTA_NAVEGACAO[x].style.background = 'linen';
+            LISTA_NAVEGACAO[0].style.borderBottom = '1px solid #363636';
+            LISTA_NAVEGACAO[1].style.borderBottom = '1px solid #363636';
+            LISTA_NAVEGACAO[x].style.borderBottom = '1px solid linen';
             document.getElementById('cadastrarVeiculo').style.display='none';
             document.getElementById('liberarVeiculo').style.display='none';
             document.getElementById('exibirVeiculo').style.display='block';
