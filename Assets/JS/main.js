@@ -20,30 +20,32 @@ const MSG_SECTION_LIBERAR = document.getElementById('msgLiberar');
 
 function removeAvisoSpan(){
     document.getElementById('msgCadastrar').style.display = 'none';
+    document.getElementById('msgLiberar').style.display = 'none';
 }
 
 function CadastrarVeiculo() {
 
     if (PLACAS.includes(PLACA.value.toUpperCase())) {
         MSG_SECTION_CADASTRAR.style.display = 'block';
+        MSG_SECTION_CADASTRAR.style.color = 'red';
         MSG_SECTION_CADASTRAR.innerHTML = 'Veículo já cadastrado';
-        setTimeout(removeAvisoSpan, 2000);
     } else if (PLACA.value == "") {
         MSG_SECTION_CADASTRAR.style.display = 'block';
+        MSG_SECTION_CADASTRAR.style.color = 'red';
         MSG_SECTION_CADASTRAR.innerHTML = 'Digite uma placa';
-        setTimeout(removeAvisoSpan, 2000);
     } else if (PLACA.value.length != 7) {
         MSG_SECTION_CADASTRAR.style.display = 'block';
+        MSG_SECTION_CADASTRAR.style.color = 'red';
         MSG_SECTION_CADASTRAR.innerHTML = 'Placa inválida';
-        setTimeout(removeAvisoSpan, 2000);
     } else {
         PLACAS.push(PLACA.value.toUpperCase());
         localStorage.setItem('placas', PLACAS);
         PLACA.value = "";
         MSG_SECTION_CADASTRAR.style.display = 'block';
+        MSG_SECTION_CADASTRAR.style.color = 'green';
         MSG_SECTION_CADASTRAR.innerHTML = 'veículo cadastrado com sucesso';
-        setTimeout(removeAvisoSpan(), 2000);
     }
+    setTimeout(removeAvisoSpan, 2000);
 
 }
 
@@ -56,7 +58,6 @@ function ExibirVeiculos(){
 }
 
 function OcultarVeiculos(){
-    // LISTAR_PLACAS.style.display = 'none';
     document.getElementById('exibirVeiculo').style.display='none';
 }
 
@@ -64,26 +65,34 @@ const REMOVER_VEICULOS = document.getElementById('remover')
 function RemoverVeiculo(){
     const DELETAR_INDEX = PLACAS.indexOf(REMOVER_VEICULOS.value.toUpperCase());
     if(REMOVER_VEICULOS.value == ''){
-        console.log('Digite uma placa');
+        MSG_SECTION_LIBERAR.style.display = 'block';
+        MSG_SECTION_LIBERAR.style.color = 'red';
+        MSG_SECTION_LIBERAR.innerHTML = 'Digite uma placa';
     }else if(REMOVER_VEICULOS.value.length != 7){
-        console.log('Placa inválida')
+        MSG_SECTION_LIBERAR.style.display = 'block';
+        MSG_SECTION_LIBERAR.style.color = 'red';
+        MSG_SECTION_LIBERAR.innerHTML = 'Placa inválida';
     }else if(DELETAR_INDEX < 0){
-        console.log('Veículo não localizado');
+        MSG_SECTION_LIBERAR.style.display = 'block';
+        MSG_SECTION_LIBERAR.innerHTML = 'Veículo não localizado';
+        MSG_SECTION_LIBERAR.style.color = 'red';
     }else{
         delete PLACAS[DELETAR_INDEX];
         PLACAS[DELETAR_INDEX] = PLACAS[0];
         PLACAS.shift();
-        console.log('Veículo liberado');
         localStorage.setItem('placas', PLACAS);
-        console.log(localStorage);
         REMOVER_VEICULOS.value = "";
+        MSG_SECTION_LIBERAR.style.display = 'block';
+        MSG_SECTION_LIBERAR.style.color = 'green';
+        MSG_SECTION_LIBERAR.innerHTML = 'Veículo liberado';
     }
+    setTimeout(removeAvisoSpan, 2000);
 }
 
 // EXIBINDO O CONTEÚDO DE ACORDO COM OPÇÃO ESCOLHIDA NA NAVEGAÇÃO
 
 const LISTA_NAVEGACAO = document.getElementsByClassName('listaNavegacao');
-console.log(LISTA_NAVEGACAO);
+
 for(let x = 0; x < LISTA_NAVEGACAO.length; x++){
     LISTA_NAVEGACAO[x].addEventListener('click', () => {
         if(LISTA_NAVEGACAO[x].innerHTML == 'Cadastrar'){
