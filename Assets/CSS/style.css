@@ -11,8 +11,10 @@ li{
 
 /* HEADER */
 header{
-    margin-top: 20px;
-    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #A9A9A9;
+    color: #363636;
 }
 header h1{
     text-align: center;
@@ -21,7 +23,7 @@ header h1{
 nav ul#navegacao{
     display: flex;
     justify-content: center;
-    background-color: aqua;
+    background-color: #363636;
 }
 
 ul#navegacao li{
@@ -42,6 +44,7 @@ main{
     position: relative;
     justify-content: center;
     align-items: center;
+    background-color: linen;
 }
 
 main section{
@@ -117,4 +120,8 @@ h3 i.fa-solid.fa-x{
 /* FOOTER */
 footer{
     text-align: center;
+    background-color: #A9A9A9;
+    color: #363636;
+    height: 43px;
+    padding-top: 5px;
 }
