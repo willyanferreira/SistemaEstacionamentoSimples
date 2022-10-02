@@ -33,8 +33,9 @@ ul#navegacao li{
 
 ul#navegacao li span{
     cursor: pointer;
-    background-color: tomato;
+    color: #A9A9A9;
     padding: 0 10px 0 10px;
+    font-weight: bolder;
 }
 
 /* MAIN */
