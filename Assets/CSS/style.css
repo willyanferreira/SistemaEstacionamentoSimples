@@ -125,4 +125,7 @@ footer{
     color: #363636;
     height: 43px;
     padding-top: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }

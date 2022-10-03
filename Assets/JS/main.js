@@ -59,6 +59,7 @@ function ExibirVeiculos(){
 
 function OcultarVeiculos(){
     LISTA_NAVEGACAO[2].style.background = '#363636';
+    LISTA_NAVEGACAO[2].style.borderBottom = '1px solid #363636';
     document.getElementById('exibirVeiculo').style.display='none';
 }
 
