@@ -45,20 +45,21 @@
             <ul id="exibirVeiculos"></ul>
         </section>
         <section id="informaNomeTarifa">
+            <h4>Dados iniciais</h4>
             <div>
-                <label for="nomeOperador">Nome:</label>
-                <input type="text" id="nomeOperador" placeholder="informe seu nome">
+                <label for="informarOperador">Nome:</label>
+                <input type="text" id="informarOperador" placeholder="informe seu nome">
             </div>
             <div>
-                <label for="tarifa">Tarifa:</label>
-                <input type="text" id="tarifa" placeholder="informe a tarifa">
+                <label for="informarTarifa">Tarifa:</label>
+                <input type="text" id="informarTarifa" placeholder="informe a tarifa">
             </div>
         </section>
     </main>
 
     <footer>
-        <p>Operador: <span>Willyan</span></p>
-        <p>Tarifa: <span>2,00</span></p>
+        <p>Operador: <span id="recuperarOperador"></span></p>
+        <p>Tarifa: <span id="recuperarTarifa"></span></p>
     </footer>
 
     <!-- scripts -->
