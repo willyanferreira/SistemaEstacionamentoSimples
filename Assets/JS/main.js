@@ -28,14 +28,17 @@ function CadastrarVeiculo() {
     if (PLACAS.includes(PLACA.value.toUpperCase())) {
         MSG_SECTION_CADASTRAR.style.display = 'block';
         MSG_SECTION_CADASTRAR.style.color = 'red';
+        MSG_SECTION_CADASTRAR.style.fontSize = '18px';
         MSG_SECTION_CADASTRAR.innerHTML = 'Veículo já cadastrado';
     } else if (PLACA.value == "") {
         MSG_SECTION_CADASTRAR.style.display = 'block';
         MSG_SECTION_CADASTRAR.style.color = 'red';
+        MSG_SECTION_CADASTRAR.style.fontSize = '18px';
         MSG_SECTION_CADASTRAR.innerHTML = 'Digite uma placa';
     } else if (PLACA.value.length != 7) {
         MSG_SECTION_CADASTRAR.style.display = 'block';
         MSG_SECTION_CADASTRAR.style.color = 'red';
+        MSG_SECTION_CADASTRAR.style.fontSize = '18px';
         MSG_SECTION_CADASTRAR.innerHTML = 'Placa inválida';
     } else {
         PLACAS.push(PLACA.value.toUpperCase());
@@ -43,6 +46,7 @@ function CadastrarVeiculo() {
         PLACA.value = "";
         MSG_SECTION_CADASTRAR.style.display = 'block';
         MSG_SECTION_CADASTRAR.style.color = 'green';
+        MSG_SECTION_CADASTRAR.style.fontSize = '18px';
         MSG_SECTION_CADASTRAR.innerHTML = 'veículo cadastrado com sucesso';
     }
     setTimeout(removeAvisoSpan, 2000);
@@ -69,15 +73,18 @@ function RemoverVeiculo(){
     if(REMOVER_VEICULOS.value == ''){
         MSG_SECTION_LIBERAR.style.display = 'block';
         MSG_SECTION_LIBERAR.style.color = 'red';
+        MSG_SECTION_LIBERAR.style.fontSize = '18px';
         MSG_SECTION_LIBERAR.innerHTML = 'Digite uma placa';
     }else if(REMOVER_VEICULOS.value.length != 7){
         MSG_SECTION_LIBERAR.style.display = 'block';
         MSG_SECTION_LIBERAR.style.color = 'red';
+        MSG_SECTION_LIBERAR.style.fontSize = '18px';
         MSG_SECTION_LIBERAR.innerHTML = 'Placa inválida';
     }else if(DELETAR_INDEX < 0){
         MSG_SECTION_LIBERAR.style.display = 'block';
-        MSG_SECTION_LIBERAR.innerHTML = 'Veículo não localizado';
         MSG_SECTION_LIBERAR.style.color = 'red';
+        MSG_SECTION_LIBERAR.style.fontSize = '18px';
+        MSG_SECTION_LIBERAR.innerHTML = 'Veículo não localizado';
     }else{
         delete PLACAS[DELETAR_INDEX];
         PLACAS[DELETAR_INDEX] = PLACAS[0];
@@ -86,6 +93,7 @@ function RemoverVeiculo(){
         REMOVER_VEICULOS.value = "";
         MSG_SECTION_LIBERAR.style.display = 'block';
         MSG_SECTION_LIBERAR.style.color = 'green';
+        MSG_SECTION_LIBERAR.style.fontSize = '18px';
         MSG_SECTION_LIBERAR.innerHTML = 'Veículo liberado';
     }
     setTimeout(removeAvisoSpan, 2000);
@@ -133,3 +141,5 @@ for(let x = 0; x < LISTA_NAVEGACAO.length; x++){
         }
     })
 }
+
+// RECUPERANDO OPERADOR E TARIFA
