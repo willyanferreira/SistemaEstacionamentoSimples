@@ -15,6 +15,10 @@ header{
     padding-bottom: 20px;
     background-color: #A9A9A9;
     color: #363636;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 header h1{
     text-align: center;
@@ -22,13 +26,15 @@ header h1{
 
 nav ul#navegacao{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     background-color: #363636;
+    align-items: center;
+    min-height: 50px;
 }
 
 ul#navegacao li{
-    width: 200px;
     text-align: center;
+    width: 200px;
 }
 
 ul#navegacao li span{
@@ -36,16 +42,21 @@ ul#navegacao li span{
     color: #A9A9A9;
     padding: 0 10px 0 10px;
     font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50px;
 }
 
 /* MAIN */
 main{
     display: flex;
-    min-height: 150px;
+    min-height: 300px;
     position: relative;
     justify-content: center;
     align-items: center;
     background-color: linen;
+    font-size: 30px;
 }
 
 main section{
@@ -62,11 +73,13 @@ section#cadastrarVeiculo, section#liberarVeiculo{
 
 section#cadastrarVeiculo input, section#liberarVeiculo input{
     width: 500px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+    margin-top: 15px;
     border-radius: 5px;
     border: 1px solid #cecece;
     outline: none;
     text-align: center;
+    height: 30px;
 }
 
 section#cadastrarVeiculo button, section#liberarVeiculo button{
@@ -75,6 +88,7 @@ section#cadastrarVeiculo button, section#liberarVeiculo button{
     border: 1px solid #90EE90;
     border-radius: 5px;
     outline: none;
+    height: 30px;
 }
 
 section#cadastrarVeiculo button:hover, section#liberarVeiculo button:hover{
@@ -118,12 +132,18 @@ h3 i.fa-solid.fa-x{
     top: 2px;
 }
 
+/* SECTION TARIFA */
+section#informaNomeTarifa{
+    border: 1px solid green;
+    text-align: center;
+}
+
 /* FOOTER */
 footer{
     text-align: center;
     background-color: #A9A9A9;
     color: #363636;
-    height: 43px;
+    min-height: 75px;
     padding-top: 5px;
     display: flex;
     justify-content: space-around;
