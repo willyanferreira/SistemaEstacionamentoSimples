@@ -143,3 +143,13 @@ for(let x = 0; x < LISTA_NAVEGACAO.length; x++){
 }
 
 // RECUPERANDO OPERADOR E TARIFA
+const INFORMAR_OPERADOR = document.getElementById('informarOperador');
+const INFORMAR_TARIFA = document.getElementById('informarTarifa');
+const CONFIRMAR_DADOS = document.getElementById('confirmarDadosIniciais');
+const OPERADOR = document.getElementById('recuperarOperador');
+const TARIFA = document.getElementById('recuperarTarifa');
+
+CONFIRMAR_DADOS.addEventListener('click', () => {
+    OPERADOR.innerHTML = INFORMAR_OPERADOR.value;
+    TARIFA.innerHTML = INFORMAR_TARIFA.value;
+})
