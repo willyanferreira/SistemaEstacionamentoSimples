@@ -136,6 +136,7 @@ h3 i.fa-solid.fa-x{
 section#informaNomeTarifa{
     border: 1px solid green;
     text-align: center;
+    display: none;
 }
 
 /* FOOTER */
