@@ -2,6 +2,9 @@ const PLACA = document.getElementById("cadastrar");
 const PLACAS = [];
 const LISTAR_PLACAS = document.getElementById("exibirVeiculos");
 
+// RECUPERANDO OS INTENS DA NAVEGAÇÃO
+const LISTA_NAVEGACAO = document.getElementsByClassName('listaNavegacao');
+
 // RECUPERANDO OPERADOR E TARIFA
 const DADOS_OPERACAO = document.getElementById('informaNomeTarifa');
 const INFORMAR_OPERADOR = document.getElementById('informarOperador');
@@ -16,13 +19,19 @@ if(localStorage.length == 2){
     OPERADOR.innerHTML = localStorage.getItem('operador');
     TARIFA.innerHTML = localStorage.getItem('tarifa');
 }else if (localStorage.length == 0 ) {
+    LISTA_NAVEGACAO[0].style.display = 'none';
+    LISTA_NAVEGACAO[1].style.display = 'none';
+    LISTA_NAVEGACAO[2].style.display = 'none';
     localStorage.setItem("placas", PLACAS);
     localStorage.removeItem("placas", PLACAS[0]);
     DADOS_OPERACAO.style.display = 'block';
 }else if(localStorage.getItem("placas", PLACAS) == ''){
+    alert(`Bem vindo de volta ${localStorage.getItem('operador')} estou limpando o array`)
+    OPERADOR.innerHTML = localStorage.getItem('operador');
+    TARIFA.innerHTML = localStorage.getItem('tarifa');
     localStorage.removeItem("placas", PLACAS[0]);
 } else {
-    alert(`Bem vindo de volta ${localStorage.getItem('operador')}`)
+    alert(`Bem vindo de volta ${localStorage.getItem('operador')} sou o else`)
     OPERADOR.innerHTML = localStorage.getItem('operador');
     TARIFA.innerHTML = localStorage.getItem('tarifa');
     const RECUPERANDo_PLACAS = localStorage.placas.split(',');
@@ -116,9 +125,6 @@ function RemoverVeiculo(){
 }
 
 // EXIBINDO O CONTEÚDO DE ACORDO COM OPÇÃO ESCOLHIDA NA NAVEGAÇÃO
-
-const LISTA_NAVEGACAO = document.getElementsByClassName('listaNavegacao');
-
 for(let x = 0; x < LISTA_NAVEGACAO.length; x++){
     LISTA_NAVEGACAO[x].addEventListener('click', () => {
         if(LISTA_NAVEGACAO[x].innerHTML == 'Cadastrar'){
@@ -165,4 +171,7 @@ CONFIRMAR_DADOS.addEventListener('click', () => {
     DADOS_OPERACAO.style.display = 'none';
     OPERADOR.innerHTML = localStorage.getItem('operador');
     TARIFA.innerHTML = localStorage.getItem('tarifa');
+    LISTA_NAVEGACAO[0].style.display = 'flex';
+    LISTA_NAVEGACAO[1].style.display = 'flex';
+    LISTA_NAVEGACAO[2].style.display = 'flex';
 })
