@@ -2,13 +2,29 @@ const PLACA = document.getElementById("cadastrar");
 const PLACAS = [];
 const LISTAR_PLACAS = document.getElementById("exibirVeiculos");
 
+// RECUPERANDO OPERADOR E TARIFA
+const DADOS_OPERACAO = document.getElementById('informaNomeTarifa');
+const INFORMAR_OPERADOR = document.getElementById('informarOperador');
+const INFORMAR_TARIFA = document.getElementById('informarTarifa');
+const CONFIRMAR_DADOS = document.getElementById('confirmarDadosIniciais');
+const OPERADOR = document.getElementById('recuperarOperador');
+const TARIFA = document.getElementById('recuperarTarifa');
+
 // CHECANDO O LENGTH DO LOCALSTORAGE E CRIANDO O OBJETO PLACAS, SE JÁ EXISTIR RECUPERANDO OS ELEMENTOS.
-if (localStorage.length == 0 ) {
+if(localStorage.length == 2){
+    alert(`Bem vindo de volta ${localStorage.getItem('operador')}`)
+    OPERADOR.innerHTML = localStorage.getItem('operador');
+    TARIFA.innerHTML = localStorage.getItem('tarifa');
+}else if (localStorage.length == 0 ) {
     localStorage.setItem("placas", PLACAS);
     localStorage.removeItem("placas", PLACAS[0]);
+    DADOS_OPERACAO.style.display = 'block';
 }else if(localStorage.getItem("placas", PLACAS) == ''){
     localStorage.removeItem("placas", PLACAS[0]);
 } else {
+    alert(`Bem vindo de volta ${localStorage.getItem('operador')}`)
+    OPERADOR.innerHTML = localStorage.getItem('operador');
+    TARIFA.innerHTML = localStorage.getItem('tarifa');
     const RECUPERANDo_PLACAS = localStorage.placas.split(',');
     for(let x = 0; x < RECUPERANDo_PLACAS.length; x++){
         PLACAS[x] = RECUPERANDo_PLACAS[x];
@@ -143,13 +159,10 @@ for(let x = 0; x < LISTA_NAVEGACAO.length; x++){
 }
 
 // RECUPERANDO OPERADOR E TARIFA
-const INFORMAR_OPERADOR = document.getElementById('informarOperador');
-const INFORMAR_TARIFA = document.getElementById('informarTarifa');
-const CONFIRMAR_DADOS = document.getElementById('confirmarDadosIniciais');
-const OPERADOR = document.getElementById('recuperarOperador');
-const TARIFA = document.getElementById('recuperarTarifa');
-
 CONFIRMAR_DADOS.addEventListener('click', () => {
-    OPERADOR.innerHTML = INFORMAR_OPERADOR.value;
-    TARIFA.innerHTML = INFORMAR_TARIFA.value;
+    localStorage.setItem('operador', INFORMAR_OPERADOR.value);
+    localStorage.setItem('tarifa', INFORMAR_TARIFA.value);
+    DADOS_OPERACAO.style.display = 'none';
+    OPERADOR.innerHTML = localStorage.getItem('operador');
+    TARIFA.innerHTML = localStorage.getItem('tarifa');
 })
