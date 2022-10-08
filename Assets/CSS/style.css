@@ -132,6 +132,32 @@ h3 i.fa-solid.fa-x{
     top: 2px;
 }
 
+div#etapas{
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 6px;
+    margin-bottom: 40px;
+}
+
+div#etapas div{
+    border: 1px solid green;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 15px;
+}
+
+div#div1::after, div#div2::after{ 
+    content: '';
+    width: 146px;
+    height: 6px;
+    background-color: black;
+    margin-left: 6px;
+    margin-top: 6px;
+    position: absolute;
+}
+
 /* SECTION TARIFA */
 section#informaNomeTarifa{
     border: 1px solid green;
@@ -149,33 +175,4 @@ footer{
     display: flex;
     justify-content: space-around;
     align-items: center;
-}
-
-div#etapas{
-    border: 1px solid red;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 200px;
-}
-
-div#etapas div{
-    border: 1px solid green;
-    border-radius: 50%;
-    padding: 10px;
-}
-
-div#etapas div#div1{
-    background-color: green;
-    color: black;
-}
-
-div#div1::after{
-    content: '';
-    width: 250px;
-    height: 10px;
-    background-color: black;
-    margin-left: 9px;
-    margin-top: 5px;
-    position: absolute;
 }
