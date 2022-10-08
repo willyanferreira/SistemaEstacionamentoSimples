@@ -134,7 +134,7 @@ h3 i.fa-solid.fa-x{
 
 div#etapas{
     border: 1px solid red;
-    display: flex;
+    display: none;
     justify-content: space-around;
     align-items: center;
     margin-top: 6px;
@@ -156,6 +156,10 @@ div#div1::after, div#div2::after{
     margin-left: 6px;
     margin-top: 6px;
     position: absolute;
+}
+
+div#etapa2, div#etapa3{
+    display: none;
 }
 
 /* SECTION TARIFA */
