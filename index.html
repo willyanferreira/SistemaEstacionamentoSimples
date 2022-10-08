@@ -42,8 +42,20 @@
             <div id="liberarVeiculo">
                 <label for="remover">Liberar veículo</label>
                 <input type="text" id="remover" placeholder="Digite a placa do veículo" maxlength="7">
-                <button type="button" onclick="RemoverVeiculo()">Procurar</button>
+                <button type="button" onclick="ProcurarVeiculo()">Procurar</button>
                 <span id="msgLiberar"></span>
+            </div>
+            <div id="etapa2">
+                <p>Véiculo de placa <span id="veiculo"></span> localizdo</p>
+                <label for="tempoEstacionado">Tempo de estacionamento</label>
+                <input type="number" id="tempoEstacionado" min="1" max="24">
+                <button type="button">Avançar</button>
+            </div>
+            <div id="etapa3">
+                <p>Veículo: <span id="confirmacaoVeiculo"></span></p>
+                <p>Tempo: <span id="confirmacaoTempoEstacionado"></span></p>
+                <p>Valor total: <span id="valorTotal"></span></p>
+                <button type="button">Liberar</button>
             </div>
         </section>
 
