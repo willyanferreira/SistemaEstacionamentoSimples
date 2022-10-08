@@ -93,7 +93,10 @@ function OcultarVeiculos(){
 }
 
 const REMOVER_VEICULOS = document.getElementById('remover')
-function RemoverVeiculo(){
+const SPAN_VEICULO = document.getElementById('veiculo');
+const TEMPO_ESTACIONADO = document.getElementById('tempoEstacionado');
+
+function ProcurarVeiculo(){
     const DELETAR_INDEX = PLACAS.indexOf(REMOVER_VEICULOS.value.toUpperCase());
     if(REMOVER_VEICULOS.value == ''){
         MSG_SECTION_LIBERAR.style.display = 'block';
@@ -111,15 +114,16 @@ function RemoverVeiculo(){
         MSG_SECTION_LIBERAR.style.fontSize = '18px';
         MSG_SECTION_LIBERAR.innerHTML = 'Veículo não localizado';
     }else{
-        delete PLACAS[DELETAR_INDEX];
-        PLACAS[DELETAR_INDEX] = PLACAS[0];
-        PLACAS.shift();
-        localStorage.setItem('placas', PLACAS);
-        REMOVER_VEICULOS.value = "";
-        MSG_SECTION_LIBERAR.style.display = 'block';
-        MSG_SECTION_LIBERAR.style.color = 'green';
-        MSG_SECTION_LIBERAR.style.fontSize = '18px';
-        MSG_SECTION_LIBERAR.innerHTML = 'Veículo liberado';
+        // delete PLACAS[DELETAR_INDEX];
+        // PLACAS[DELETAR_INDEX] = PLACAS[0];
+        // PLACAS.shift();
+        // localStorage.setItem('placas', PLACAS);
+        // REMOVER_VEICULOS.value = "";
+        // MSG_SECTION_LIBERAR.style.display = 'block';
+        // MSG_SECTION_LIBERAR.style.color = 'green';
+        // MSG_SECTION_LIBERAR.style.fontSize = '18px';
+        // MSG_SECTION_LIBERAR.innerHTML = `Veículo de placa ${REMOVER_VEICULOS.value.toUpperCase()} localizado`;
+        SPAN_VEICULO.innerHTML = REMOVER_VEICULOS.value.toUpperCase();
     }
     setTimeout(removeAvisoSpan, 2000);
 }
