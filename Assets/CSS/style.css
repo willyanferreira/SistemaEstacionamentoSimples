@@ -65,13 +65,13 @@ main section{
 }
 
 /* SECTIONS CADASTRAR E LIBERAR */
-section#cadastrarVeiculo, section#liberarVeiculo{
+section#cadastrarVeiculo, div#liberarVeiculo{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-section#cadastrarVeiculo input, section#liberarVeiculo input{
+section#cadastrarVeiculo input, div#liberarVeiculo input{
     width: 500px;
     margin-bottom: 15px;
     margin-top: 15px;
@@ -82,7 +82,7 @@ section#cadastrarVeiculo input, section#liberarVeiculo input{
     height: 30px;
 }
 
-section#cadastrarVeiculo button, section#liberarVeiculo button{
+section#cadastrarVeiculo button, div#liberarVeiculo button{
     width: 500px;
     background-color: #98FB98;
     border: 1px solid #90EE90;
@@ -91,25 +91,25 @@ section#cadastrarVeiculo button, section#liberarVeiculo button{
     height: 30px;
 }
 
-section#cadastrarVeiculo button:hover, section#liberarVeiculo button:hover{
+section#cadastrarVeiculo button:hover, div#liberarVeiculo button:hover{
     background-color: #3CB371;
     cursor: pointer;
 }
 
-section#cadastrarVeiculo button:focus, section#liberarVeiculo button:focus{
+section#cadastrarVeiculo button:focus, div#liberarVeiculo button:focus{
     background-color: #3CB371;
 }
 
-section#cadastrarVeiculo button:active, section#liberarVeiculo button:active{
+section#cadastrarVeiculo button:active, div#liberarVeiculo button:active{
     background-color: #98FB98;
 }
 
-section#cadastrarVeiculo label, section#liberarVeiculo label{
+section#cadastrarVeiculo label, div#liberarVeiculo label{
     margin-bottom: 5px;
 }
 
 /* SECTIONS CADASTRAR, LIBERAR E EXIBIR */
-section#cadastrarVeiculo, section#liberarVeiculo, section#exibirVeiculo{
+section#cadastrarVeiculo, div#liberarVeiculo, section#exibirVeiculo{
     display: none;
 }
 
