@@ -35,8 +35,8 @@
 
         <section>
             <div id="etapas">
-                <div id="div1">1</div>
-                <div id="div2">2</div>
+                <div id="div1" class="divsEtapas">1</div>
+                <div id="div2" class="divsEtapas">2</div>
                 <div id="div3">3</div>
             </div>
             <div id="liberarVeiculo">
@@ -49,13 +49,14 @@
                 <p>Véiculo de placa <span id="veiculo"></span> localizdo</p>
                 <label for="tempoEstacionado">Tempo de estacionamento</label>
                 <input type="number" id="tempoEstacionado" min="1" max="24">
-                <button type="button">Avançar</button>
+                <button type="button" id="avancar">Avançar</button>
             </div>
             <div id="etapa3">
                 <p>Veículo: <span id="confirmacaoVeiculo"></span></p>
                 <p>Tempo: <span id="confirmacaoTempoEstacionado"></span></p>
                 <p>Valor total: <span id="valorTotal"></span></p>
-                <button type="button">Liberar</button>
+                <button type="button" id="liberar">Liberar</button>
+                <span id="msgLiberado"></span>
             </div>
         </section>
 

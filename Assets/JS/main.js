@@ -14,18 +14,18 @@ const OPERADOR = document.getElementById('recuperarOperador');
 const TARIFA = document.getElementById('recuperarTarifa');
 
 // CHECANDO O LENGTH DO LOCALSTORAGE E CRIANDO O OBJETO PLACAS, SE JÁ EXISTIR RECUPERANDO OS ELEMENTOS.
-if(localStorage.length == 2){
+if (localStorage.length == 2) {
     alert(`Bem vindo de volta ${localStorage.getItem('operador')}`)
     OPERADOR.innerHTML = localStorage.getItem('operador');
     TARIFA.innerHTML = localStorage.getItem('tarifa');
-}else if (localStorage.length == 0 ) {
+} else if (localStorage.length == 0) {
     LISTA_NAVEGACAO[0].style.display = 'none';
     LISTA_NAVEGACAO[1].style.display = 'none';
     LISTA_NAVEGACAO[2].style.display = 'none';
     localStorage.setItem("placas", PLACAS);
     localStorage.removeItem("placas", PLACAS[0]);
     DADOS_OPERACAO.style.display = 'block';
-}else if(localStorage.getItem("placas", PLACAS) == ''){
+} else if (localStorage.getItem("placas", PLACAS) == '') {
     alert(`Bem vindo de volta ${localStorage.getItem('operador')} estou limpando o array`)
     OPERADOR.innerHTML = localStorage.getItem('operador');
     TARIFA.innerHTML = localStorage.getItem('tarifa');
@@ -35,17 +35,19 @@ if(localStorage.length == 2){
     OPERADOR.innerHTML = localStorage.getItem('operador');
     TARIFA.innerHTML = localStorage.getItem('tarifa');
     const RECUPERANDo_PLACAS = localStorage.placas.split(',');
-    for(let x = 0; x < RECUPERANDo_PLACAS.length; x++){
+    for (let x = 0; x < RECUPERANDo_PLACAS.length; x++) {
         PLACAS[x] = RECUPERANDo_PLACAS[x];
     }
 }
 
 const MSG_SECTION_CADASTRAR = document.getElementById('msgCadastrar');
 const MSG_SECTION_LIBERAR = document.getElementById('msgLiberar');
+const MSG_LIBERADO = document.getElementById('msgLiberado');
 
-function removeAvisoSpan(){
-    document.getElementById('msgCadastrar').style.display = 'none';
-    document.getElementById('msgLiberar').style.display = 'none';
+function removeAvisoSpan() {
+    MSG_SECTION_CADASTRAR.style.display = 'none';
+    MSG_SECTION_LIBERAR.style.display = 'none';
+    MSG_LIBERADO.style.display = 'none';
 }
 
 function CadastrarVeiculo() {
@@ -78,91 +80,106 @@ function CadastrarVeiculo() {
 
 }
 
-function ExibirVeiculos(){
+function ExibirVeiculos() {
     LISTAR_PLACAS.innerHTML = '';
-    for(let x = 0; x < PLACAS.sort().length; x++){
+    for (let x = 0; x < PLACAS.sort().length; x++) {
         LISTAR_PLACAS.innerHTML += `<li>${PLACAS[x]}</li>`;
     }
     // LISTAR_PLACAS.style.display = 'block';
 }
 
-function OcultarVeiculos(){
+function OcultarVeiculos() {
     LISTA_NAVEGACAO[2].style.background = '#363636';
     LISTA_NAVEGACAO[2].style.borderBottom = '1px solid #363636';
-    document.getElementById('exibirVeiculo').style.display='none';
+    document.getElementById('exibirVeiculo').style.display = 'none';
 }
 
 const REMOVER_VEICULOS = document.getElementById('remover')
 const SPAN_VEICULO = document.getElementById('veiculo');
 const TEMPO_ESTACIONADO = document.getElementById('tempoEstacionado');
+const DIV_ETAPAS = document.getElementById('etapas');
+const CADASTRAR_VEICULO = document.getElementById('cadastrarVeiculo');
+const LIBERAR_VEICULO = document.getElementById('liberarVeiculo');
+const EXIBIR_VEICULO = document.getElementById('exibirVeiculo');
+const DIV1ETAPA = document.getElementById('div1');
+const DIV2ETAPA = document.getElementById('div2');
+const DIV3ETAPA = document.getElementById('div3');
+const CONTAINER_ETAPA2 = document.getElementById('etapa2');
+const CONTAINER_ETAPA3 = document.getElementById('etapa3');
 
-function ProcurarVeiculo(){
-    const DELETAR_INDEX = PLACAS.indexOf(REMOVER_VEICULOS.value.toUpperCase());
-    if(REMOVER_VEICULOS.value == ''){
+function ProcurarVeiculo() {
+    const PROCURAR_INDEX = PLACAS.indexOf(REMOVER_VEICULOS.value.toUpperCase());
+    if (REMOVER_VEICULOS.value == '') {
         MSG_SECTION_LIBERAR.style.display = 'block';
         MSG_SECTION_LIBERAR.style.color = 'red';
         MSG_SECTION_LIBERAR.style.fontSize = '18px';
         MSG_SECTION_LIBERAR.innerHTML = 'Digite uma placa';
-    }else if(REMOVER_VEICULOS.value.length != 7){
+    } else if (REMOVER_VEICULOS.value.length != 7) {
         MSG_SECTION_LIBERAR.style.display = 'block';
         MSG_SECTION_LIBERAR.style.color = 'red';
         MSG_SECTION_LIBERAR.style.fontSize = '18px';
         MSG_SECTION_LIBERAR.innerHTML = 'Placa inválida';
-    }else if(DELETAR_INDEX < 0){
+    } else if (PROCURAR_INDEX < 0) {
         MSG_SECTION_LIBERAR.style.display = 'block';
         MSG_SECTION_LIBERAR.style.color = 'red';
         MSG_SECTION_LIBERAR.style.fontSize = '18px';
         MSG_SECTION_LIBERAR.innerHTML = 'Veículo não localizado';
-    }else{
-        // delete PLACAS[DELETAR_INDEX];
-        // PLACAS[DELETAR_INDEX] = PLACAS[0];
-        // PLACAS.shift();
-        // localStorage.setItem('placas', PLACAS);
-        // REMOVER_VEICULOS.value = "";
-        // MSG_SECTION_LIBERAR.style.display = 'block';
-        // MSG_SECTION_LIBERAR.style.color = 'green';
-        // MSG_SECTION_LIBERAR.style.fontSize = '18px';
-        // MSG_SECTION_LIBERAR.innerHTML = `Veículo de placa ${REMOVER_VEICULOS.value.toUpperCase()} localizado`;
+    } else {
+
+        LIBERAR_VEICULO.style.display = 'none';
+        CONTAINER_ETAPA2.style.display = 'block';
         SPAN_VEICULO.innerHTML = REMOVER_VEICULOS.value.toUpperCase();
+
     }
+    return REMOVER_VEICULOS.value;
     setTimeout(removeAvisoSpan, 2000);
 }
 
 // EXIBINDO O CONTEÚDO DE ACORDO COM OPÇÃO ESCOLHIDA NA NAVEGAÇÃO
-for(let x = 0; x < LISTA_NAVEGACAO.length; x++){
+
+for (let x = 0; x < LISTA_NAVEGACAO.length; x++) {
     LISTA_NAVEGACAO[x].addEventListener('click', () => {
-        if(LISTA_NAVEGACAO[x].innerHTML == 'Cadastrar'){
+        if (LISTA_NAVEGACAO[x].innerHTML == 'Cadastrar') {
             LISTA_NAVEGACAO[1].style.background = '#363636';
             LISTA_NAVEGACAO[2].style.background = '#363636';
             LISTA_NAVEGACAO[x].style.background = 'linen';
             LISTA_NAVEGACAO[1].style.borderBottom = '1px solid #363636';
             LISTA_NAVEGACAO[2].style.borderBottom = '1px solid #363636';
             LISTA_NAVEGACAO[x].style.borderBottom = '1px solid linen';
-            document.getElementById('liberarVeiculo').style.display='none';
-            document.getElementById('exibirVeiculo').style.display='none';
-            document.getElementById('cadastrarVeiculo').style.display='flex';
+            DIV_ETAPAS.style.display = 'none';
+            LIBERAR_VEICULO.style.display = 'none';
+            EXIBIR_VEICULO.style.display = 'none';
+            CONTAINER_ETAPA2.style.display = 'none';
+            CONTAINER_ETAPA3.style.display = 'none';
+            CADASTRAR_VEICULO.style.display = 'flex';
         }
-        if(LISTA_NAVEGACAO[x].innerHTML == 'Liberar'){
+        if (LISTA_NAVEGACAO[x].innerHTML == 'Liberar') {
             LISTA_NAVEGACAO[0].style.background = '#363636';
             LISTA_NAVEGACAO[2].style.background = '#363636';
             LISTA_NAVEGACAO[x].style.background = 'linen';
             LISTA_NAVEGACAO[0].style.borderBottom = '1px solid #363636';
             LISTA_NAVEGACAO[2].style.borderBottom = '1px solid #363636';
             LISTA_NAVEGACAO[x].style.borderBottom = '1px solid linen';
-            document.getElementById('cadastrarVeiculo').style.display='none';
-            document.getElementById('exibirVeiculo').style.display='none';
-            document.getElementById('liberarVeiculo').style.display='flex';
+            DIV_ETAPAS.style.display = 'flex';
+            CADASTRAR_VEICULO.style.display = 'none';
+            EXIBIR_VEICULO.style.display = 'none';
+            CONTAINER_ETAPA2.style.display = 'none';
+            CONTAINER_ETAPA3.style.display = 'none';
+            LIBERAR_VEICULO.style.display = 'flex';
         }
-        if(LISTA_NAVEGACAO[x].innerHTML == 'Exibir'){
+        if (LISTA_NAVEGACAO[x].innerHTML == 'Exibir') {
             LISTA_NAVEGACAO[0].style.background = '#363636';
             LISTA_NAVEGACAO[1].style.background = '#363636';
             LISTA_NAVEGACAO[x].style.background = 'linen';
             LISTA_NAVEGACAO[0].style.borderBottom = '1px solid #363636';
             LISTA_NAVEGACAO[1].style.borderBottom = '1px solid #363636';
             LISTA_NAVEGACAO[x].style.borderBottom = '1px solid linen';
-            document.getElementById('cadastrarVeiculo').style.display='none';
-            document.getElementById('liberarVeiculo').style.display='none';
-            document.getElementById('exibirVeiculo').style.display='block';
+            DIV_ETAPAS.style.display = 'none';
+            CADASTRAR_VEICULO.style.display = 'none';
+            LIBERAR_VEICULO.style.display = 'none';
+            CONTAINER_ETAPA2.style.display = 'none';
+            CONTAINER_ETAPA3.style.display = 'none';
+            EXIBIR_VEICULO.style.display = 'block';
             ExibirVeiculos()
         }
     })
@@ -178,4 +195,30 @@ CONFIRMAR_DADOS.addEventListener('click', () => {
     LISTA_NAVEGACAO[0].style.display = 'flex';
     LISTA_NAVEGACAO[1].style.display = 'flex';
     LISTA_NAVEGACAO[2].style.display = 'flex';
+})
+
+const CONFIRMACAO_VEICULO = document.getElementById('confirmacaoVeiculo');
+const CONFIRMACAO_TEMPO_ESTACIONADO = document.getElementById('confirmacaoTempoEstacionado');
+const VALOR_TOTAL = document.getElementById('valorTotal');
+
+const AVANCAR = document.getElementById('avancar').addEventListener('click', () => {
+    CONTAINER_ETAPA2.style.display = 'none';
+    CONTAINER_ETAPA3.style.display = 'block';
+    CONFIRMACAO_VEICULO.innerHTML = SPAN_VEICULO.innerHTML;
+    CONFIRMACAO_TEMPO_ESTACIONADO.innerHTML = TEMPO_ESTACIONADO.value
+    VALOR_TOTAL.innerHTML = CONFIRMACAO_TEMPO_ESTACIONADO.innerHTML * TARIFA.innerHTML;
+})
+
+const LIBERAR = document.getElementById('liberar').addEventListener('click', () => {
+    const DELETAR_INDEX = PLACAS.indexOf(REMOVER_VEICULOS.value.toUpperCase());
+    delete PLACAS[DELETAR_INDEX];
+    PLACAS[DELETAR_INDEX] = PLACAS[0];
+    PLACAS.shift();
+    localStorage.setItem('placas', PLACAS);
+    REMOVER_VEICULOS.value = "";
+    MSG_LIBERADO.style.display = 'block';
+    MSG_LIBERADO.style.color = 'green';
+    MSG_LIBERADO.style.fontSize = '18px';
+    MSG_LIBERADO.innerHTML = 'Veículo liberado com sucesso';
+    setTimeout(removeAvisoSpan, 2000);
 })

@@ -59,16 +59,13 @@ main{
     font-size: 30px;
 }
 
-main section{
-    padding: 20px;
-    
-}
-
 /* SECTIONS CADASTRAR E LIBERAR */
 section#cadastrarVeiculo, div#liberarVeiculo{
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 1px solid green;
+    height: 150px;
 }
 
 section#cadastrarVeiculo input, div#liberarVeiculo input{
@@ -133,7 +130,6 @@ h3 i.fa-solid.fa-x{
 }
 
 div#etapas{
-    border: 1px solid red;
     display: none;
     justify-content: space-around;
     align-items: center;
@@ -142,24 +138,34 @@ div#etapas{
 }
 
 div#etapas div{
-    border: 1px solid green;
+    border: 1px solid black;
     border-radius: 50%;
     padding: 5px;
     font-size: 15px;
+    opacity: 0.5;
 }
 
-div#div1::after, div#div2::after{ 
+.divsEtapas::after{ 
     content: '';
-    width: 146px;
+    width: 147px;
     height: 6px;
     background-color: black;
     margin-left: 6px;
     margin-top: 6px;
     position: absolute;
+    opacity: 0.5;
+}
+
+.divEtapaOK::after{
+    background-color: #3CB371;
+    opacity: 1;
 }
 
 div#etapa2, div#etapa3{
     display: none;
+    border: 1px solid red;
+    width: 500px;
+    height: 150px;
 }
 
 /* SECTION TARIFA */
