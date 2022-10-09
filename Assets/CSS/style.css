@@ -29,6 +29,29 @@ header h1{
     text-align: center;
 }
 
+header button#encerrarSessao{
+    background-color: #B22222;
+    outline: none;
+    border: 1px solid #800000;
+    padding: 5px;
+    color: #fff;
+    border-radius: 10px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+header button#encerrarSessao:hover{
+    background-color: #800000;
+    border: 1px solid #B22222;
+    box-shadow: 1px 1px 5px #B22222;
+}
+
+header button#encerrarSessao:active{
+    background-color: #B22222;
+    border: 1px solid #800000;
+}
+
 nav ul#navegacao{
     display: flex;
     justify-content: space-around;
@@ -193,7 +216,6 @@ div#etapa2 button, div#etapa3 button{
 
 /* SECTION TARIFA */
 section#informaNomeTarifa{
-    border: 1px solid green;
     text-align: center;
     display: none;
 }
