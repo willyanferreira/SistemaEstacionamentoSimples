@@ -26,12 +26,12 @@ if (localStorage.length == 2) {
     localStorage.removeItem("placas", PLACAS[0]);
     DADOS_OPERACAO.style.display = 'block';
 } else if (localStorage.getItem("placas", PLACAS) == '') {
-    alert(`Bem vindo de volta ${localStorage.getItem('operador')} estou limpando o array`)
+    alert(`Bem vindo de volta ${localStorage.getItem('operador')}`)
     OPERADOR.innerHTML = localStorage.getItem('operador');
     TARIFA.innerHTML = localStorage.getItem('tarifa');
     localStorage.removeItem("placas", PLACAS[0]);
 } else {
-    alert(`Bem vindo de volta ${localStorage.getItem('operador')} sou o else`)
+    alert(`Bem vindo de volta ${localStorage.getItem('operador')}`)
     OPERADOR.innerHTML = localStorage.getItem('operador');
     TARIFA.innerHTML = localStorage.getItem('tarifa');
     const RECUPERANDo_PLACAS = localStorage.placas.split(',');
@@ -129,6 +129,10 @@ function ProcurarVeiculo() {
         LIBERAR_VEICULO.style.display = 'none';
         CONTAINER_ETAPA2.style.display = 'block';
         SPAN_VEICULO.innerHTML = REMOVER_VEICULOS.value.toUpperCase();
+        DIV1ETAPA.classList.add('divEtapaOK');
+        DIV1ETAPA.style.backgroundColor = 'green';
+        DIV2ETAPA.style.border= '1px solid green';
+        DIV2ETAPA.style.color = 'black';
 
     }
     return REMOVER_VEICULOS.value;
@@ -152,6 +156,17 @@ for (let x = 0; x < LISTA_NAVEGACAO.length; x++) {
             CONTAINER_ETAPA2.style.display = 'none';
             CONTAINER_ETAPA3.style.display = 'none';
             CADASTRAR_VEICULO.style.display = 'flex';
+            DIV1ETAPA.classList.remove('divEtapaOK');
+            DIV2ETAPA.classList.remove('divEtapaOK');
+            DIV1ETAPA.style.border = '1px solid green';
+            DIV2ETAPA.style.border = '1px solid #cecece';
+            DIV3ETAPA.style.border = '1px solid #cecece';
+            DIV1ETAPA.style.backgroundColor = 'transparent';
+            DIV2ETAPA.style.backgroundColor = 'transparent';
+            DIV3ETAPA.style.backgroundColor = 'transparent';
+            DIV2ETAPA.style.color = '#cecece';    
+            DIV3ETAPA.style.color = '#cecece';
+
         }
         if (LISTA_NAVEGACAO[x].innerHTML == 'Liberar') {
             LISTA_NAVEGACAO[0].style.background = '#363636';
@@ -161,11 +176,22 @@ for (let x = 0; x < LISTA_NAVEGACAO.length; x++) {
             LISTA_NAVEGACAO[2].style.borderBottom = '1px solid #363636';
             LISTA_NAVEGACAO[x].style.borderBottom = '1px solid linen';
             DIV_ETAPAS.style.display = 'flex';
+            DIV1ETAPA.style.border = '1px solid green';
+            DIV1ETAPA.style.color = 'black';
             CADASTRAR_VEICULO.style.display = 'none';
             EXIBIR_VEICULO.style.display = 'none';
             CONTAINER_ETAPA2.style.display = 'none';
             CONTAINER_ETAPA3.style.display = 'none';
             LIBERAR_VEICULO.style.display = 'flex';
+            DIV1ETAPA.classList.remove('divEtapaOK');
+            DIV2ETAPA.classList.remove('divEtapaOK');
+            DIV2ETAPA.style.border = '1px solid #cecece';
+            DIV3ETAPA.style.border = '1px solid #cecece';
+            DIV1ETAPA.style.backgroundColor = 'transparent';
+            DIV2ETAPA.style.backgroundColor = 'transparent';
+            DIV3ETAPA.style.backgroundColor = 'transparent';
+            DIV2ETAPA.style.color = '#cecece';    
+            DIV3ETAPA.style.color = '#cecece';
         }
         if (LISTA_NAVEGACAO[x].innerHTML == 'Exibir') {
             LISTA_NAVEGACAO[0].style.background = '#363636';
@@ -180,6 +206,16 @@ for (let x = 0; x < LISTA_NAVEGACAO.length; x++) {
             CONTAINER_ETAPA2.style.display = 'none';
             CONTAINER_ETAPA3.style.display = 'none';
             EXIBIR_VEICULO.style.display = 'block';
+            DIV1ETAPA.classList.remove('divEtapaOK');
+            DIV2ETAPA.classList.remove('divEtapaOK');
+            DIV1ETAPA.style.border = '1px solid green';
+            DIV2ETAPA.style.border = '1px solid #cecece';
+            DIV3ETAPA.style.border = '1px solid #cecece';
+            DIV1ETAPA.style.backgroundColor = 'transparent';
+            DIV2ETAPA.style.backgroundColor = 'transparent';
+            DIV3ETAPA.style.backgroundColor = 'transparent';
+            DIV2ETAPA.style.color = '#cecece';    
+            DIV3ETAPA.style.color = '#cecece';
             ExibirVeiculos()
         }
     })
@@ -206,7 +242,12 @@ const AVANCAR = document.getElementById('avancar').addEventListener('click', () 
     CONTAINER_ETAPA3.style.display = 'block';
     CONFIRMACAO_VEICULO.innerHTML = SPAN_VEICULO.innerHTML;
     CONFIRMACAO_TEMPO_ESTACIONADO.innerHTML = TEMPO_ESTACIONADO.value
-    VALOR_TOTAL.innerHTML = CONFIRMACAO_TEMPO_ESTACIONADO.innerHTML * TARIFA.innerHTML;
+    VALOR_TOTAL.innerHTML = (CONFIRMACAO_TEMPO_ESTACIONADO.innerHTML * TARIFA.innerHTML).toFixed(2);
+    DIV2ETAPA.style.backgroundColor = 'green';
+    DIV2ETAPA.style.color = 'black';
+    DIV2ETAPA.classList.add('divEtapaOK');
+    DIV3ETAPA.style.border = '1px solid green';
+    DIV3ETAPA.style.color = 'black';
 })
 
 const LIBERAR = document.getElementById('liberar').addEventListener('click', () => {
@@ -221,4 +262,5 @@ const LIBERAR = document.getElementById('liberar').addEventListener('click', () 
     MSG_LIBERADO.style.fontSize = '18px';
     MSG_LIBERADO.innerHTML = 'Veículo liberado com sucesso';
     setTimeout(removeAvisoSpan, 2000);
+    DIV3ETAPA.style.backgroundColor = 'green';
 })

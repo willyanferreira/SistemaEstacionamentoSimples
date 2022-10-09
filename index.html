@@ -33,7 +33,7 @@
             <span id="msgCadastrar"></span>
         </section>
 
-        <section>
+        <section id="etapas_liberar">
             <div id="etapas">
                 <div id="div1" class="divsEtapas">1</div>
                 <div id="div2" class="divsEtapas">2</div>
@@ -47,14 +47,14 @@
             </div>
             <div id="etapa2">
                 <p>Véiculo de placa <span id="veiculo"></span> localizdo</p>
-                <label for="tempoEstacionado">Tempo de estacionamento</label>
+                <label for="tempoEstacionado">Tempo estacionado</label>
                 <input type="number" id="tempoEstacionado" min="1" max="24">
                 <button type="button" id="avancar">Avançar</button>
             </div>
             <div id="etapa3">
                 <p>Veículo: <span id="confirmacaoVeiculo"></span></p>
                 <p>Tempo: <span id="confirmacaoTempoEstacionado"></span></p>
-                <p>Valor total: <span id="valorTotal"></span></p>
+                <p>Valor total: R$<span id="valorTotal"></span></p>
                 <button type="button" id="liberar">Liberar</button>
                 <span id="msgLiberado"></span>
             </div>

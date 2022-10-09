@@ -64,7 +64,6 @@ section#cadastrarVeiculo, div#liberarVeiculo{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid green;
     height: 150px;
 }
 
@@ -129,27 +128,32 @@ h3 i.fa-solid.fa-x{
     top: 2px;
 }
 
+/* SECTION LIBERAR E ETAPAS */
+section#etapas_liberar{
+    position: relative;
+}
 div#etapas{
     display: none;
     justify-content: space-around;
     align-items: center;
     margin-top: 6px;
     margin-bottom: 40px;
+    color: #cecece;
 }
 
 div#etapas div{
-    border: 1px solid black;
+    border: 1px solid #cecece;
     border-radius: 50%;
     padding: 5px;
     font-size: 15px;
-    opacity: 0.5;
+    /* opacity: 0.5; */
 }
 
 .divsEtapas::after{ 
     content: '';
     width: 147px;
     height: 6px;
-    background-color: black;
+    background-color: #cecece;
     margin-left: 6px;
     margin-top: 6px;
     position: absolute;
@@ -163,9 +167,23 @@ div#etapas div{
 
 div#etapa2, div#etapa3{
     display: none;
-    border: 1px solid red;
     width: 500px;
     height: 150px;
+    font-size: 20px;
+    padding: 20px;
+}
+
+div#etapa2 button, div#etapa3 button{
+    background-color: red;
+    display: block;
+    position: absolute;
+    right: 10px;
+    background-color: #98FB98;
+    border: 1px solid #90EE90;
+    border-radius: 5px;
+    outline: none;
+    height: 30px;
+    padding: 0 10px 0 10px;
 }
 
 /* SECTION TARIFA */
