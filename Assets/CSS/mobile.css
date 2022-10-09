@@ -1,5 +1,25 @@
 @media screen and (max-width: 600px) {
-    main{
-        height: 470px;
+/* SECTIONS CADASTRAR E LIBERAR */
+    section#cadastrarVeiculo input, div#liberarVeiculo input{
+        width: 250px;
+    }
+
+    section#cadastrarVeiculo button, div#liberarVeiculo button{
+        width: 250px;
+    }
+
+/* DIV ETAPAS */
+    .divsEtapas::after{
+        width: 65px;
+    }
+
+/* DIV ETPA2 ETAPA3 */
+    div#etapa2, div#etapa3{
+        width: 250px;
+    }
+
+    div#etapa2 button, div#etapa3 button{
+        margin-top: 20px;
+        right: 0;
     }
 }

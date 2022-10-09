@@ -16,6 +16,9 @@ const TARIFA = document.getElementById('recuperarTarifa');
 // ACESSANDO O BTN QUE ENCERRA A SESSÃO
 const ENCERRAR = document.getElementById('encerrarSessao');
 
+// ACESSANDO O BTN LIBERAR
+const LIBERAR = document.getElementById('liberar')
+
 // CHECANDO O LENGTH DO LOCALSTORAGE E CRIANDO O OBJETO PLACAS, SE JÁ EXISTIR RECUPERANDO OS ELEMENTOS.
 if (localStorage.length == 2) {
     alert(`Bem vindo de volta ${localStorage.getItem('operador')}`)
@@ -135,7 +138,7 @@ function ProcurarVeiculo() {
         SPAN_VEICULO.innerHTML = REMOVER_VEICULOS.value.toUpperCase();
         DIV1ETAPA.classList.add('divEtapaOK');
         DIV1ETAPA.style.backgroundColor = 'green';
-        DIV2ETAPA.style.border= '1px solid green';
+        DIV2ETAPA.style.border = '1px solid green';
         DIV2ETAPA.style.color = 'black';
 
     }
@@ -160,17 +163,6 @@ for (let x = 0; x < LISTA_NAVEGACAO.length; x++) {
             CONTAINER_ETAPA2.style.display = 'none';
             CONTAINER_ETAPA3.style.display = 'none';
             CADASTRAR_VEICULO.style.display = 'flex';
-            DIV1ETAPA.classList.remove('divEtapaOK');
-            DIV2ETAPA.classList.remove('divEtapaOK');
-            DIV1ETAPA.style.border = '1px solid green';
-            DIV2ETAPA.style.border = '1px solid #cecece';
-            DIV3ETAPA.style.border = '1px solid #cecece';
-            DIV1ETAPA.style.backgroundColor = 'transparent';
-            DIV2ETAPA.style.backgroundColor = 'transparent';
-            DIV3ETAPA.style.backgroundColor = 'transparent';
-            DIV2ETAPA.style.color = '#cecece';    
-            DIV3ETAPA.style.color = '#cecece';
-
         }
         if (LISTA_NAVEGACAO[x].innerHTML == 'Liberar') {
             LISTA_NAVEGACAO[0].style.background = '#363636';
@@ -194,8 +186,9 @@ for (let x = 0; x < LISTA_NAVEGACAO.length; x++) {
             DIV1ETAPA.style.backgroundColor = 'transparent';
             DIV2ETAPA.style.backgroundColor = 'transparent';
             DIV3ETAPA.style.backgroundColor = 'transparent';
-            DIV2ETAPA.style.color = '#cecece';    
+            DIV2ETAPA.style.color = '#cecece';
             DIV3ETAPA.style.color = '#cecece';
+            LIBERAR.removeAttribute('disabled');
         }
         if (LISTA_NAVEGACAO[x].innerHTML == 'Exibir') {
             LISTA_NAVEGACAO[0].style.background = '#363636';
@@ -210,23 +203,13 @@ for (let x = 0; x < LISTA_NAVEGACAO.length; x++) {
             CONTAINER_ETAPA2.style.display = 'none';
             CONTAINER_ETAPA3.style.display = 'none';
             EXIBIR_VEICULO.style.display = 'block';
-            DIV1ETAPA.classList.remove('divEtapaOK');
-            DIV2ETAPA.classList.remove('divEtapaOK');
-            DIV1ETAPA.style.border = '1px solid green';
-            DIV2ETAPA.style.border = '1px solid #cecece';
-            DIV3ETAPA.style.border = '1px solid #cecece';
-            DIV1ETAPA.style.backgroundColor = 'transparent';
-            DIV2ETAPA.style.backgroundColor = 'transparent';
-            DIV3ETAPA.style.backgroundColor = 'transparent';
-            DIV2ETAPA.style.color = '#cecece';    
-            DIV3ETAPA.style.color = '#cecece';
             ExibirVeiculos()
         }
     })
 }
 
 // ENCERRAR SESSÃO
-ENCERRAR.addEventListener('click', () =>{
+ENCERRAR.addEventListener('click', () => {
     localStorage.clear();
     location.reload();
 })
@@ -261,7 +244,7 @@ const AVANCAR = document.getElementById('avancar').addEventListener('click', () 
     DIV3ETAPA.style.color = 'black';
 })
 
-const LIBERAR = document.getElementById('liberar').addEventListener('click', () => {
+LIBERAR.addEventListener('click', () => {
     const DELETAR_INDEX = PLACAS.indexOf(REMOVER_VEICULOS.value.toUpperCase());
     delete PLACAS[DELETAR_INDEX];
     PLACAS[DELETAR_INDEX] = PLACAS[0];
@@ -274,4 +257,5 @@ const LIBERAR = document.getElementById('liberar').addEventListener('click', () 
     MSG_LIBERADO.innerHTML = 'Veículo liberado com sucesso';
     setTimeout(removeAvisoSpan, 2000);
     DIV3ETAPA.style.backgroundColor = 'green';
+    LIBERAR.setAttribute('disabled', 'on');
 })

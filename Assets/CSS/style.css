@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 html, body{
@@ -214,10 +215,24 @@ div#etapa2 button, div#etapa3 button{
     padding: 0 10px 0 10px;
 }
 
+div#etapa2 button:hover, div#etapa3 button:hover{
+    background-color: #3CB371;
+    cursor: pointer;
+}
+
+div#etapa2 button:focus, div#etapa3 button:focus{
+    background-color: #3CB371;
+}
+
+div#etapa2 button:active, div#etapa3 button:active{
+    background-color: #98FB98;
+}
+
 /* SECTION TARIFA */
 section#informaNomeTarifa{
     text-align: center;
     display: none;
+    font-size: 20px;
 }
 
 /* FOOTER */
