@@ -13,6 +13,9 @@ const CONFIRMAR_DADOS = document.getElementById('confirmarDadosIniciais');
 const OPERADOR = document.getElementById('recuperarOperador');
 const TARIFA = document.getElementById('recuperarTarifa');
 
+// ACESSANDO O BTN QUE ENCERRA A SESSÃO
+const ENCERRAR = document.getElementById('encerrarSessao');
+
 // CHECANDO O LENGTH DO LOCALSTORAGE E CRIANDO O OBJETO PLACAS, SE JÁ EXISTIR RECUPERANDO OS ELEMENTOS.
 if (localStorage.length == 2) {
     alert(`Bem vindo de volta ${localStorage.getItem('operador')}`)
@@ -22,6 +25,7 @@ if (localStorage.length == 2) {
     LISTA_NAVEGACAO[0].style.display = 'none';
     LISTA_NAVEGACAO[1].style.display = 'none';
     LISTA_NAVEGACAO[2].style.display = 'none';
+    ENCERRAR.style.display = 'none';
     localStorage.setItem("placas", PLACAS);
     localStorage.removeItem("placas", PLACAS[0]);
     DADOS_OPERACAO.style.display = 'block';
@@ -221,6 +225,12 @@ for (let x = 0; x < LISTA_NAVEGACAO.length; x++) {
     })
 }
 
+// ENCERRAR SESSÃO
+ENCERRAR.addEventListener('click', () =>{
+    localStorage.clear();
+    location.reload();
+})
+
 // RECUPERANDO OPERADOR E TARIFA
 CONFIRMAR_DADOS.addEventListener('click', () => {
     localStorage.setItem('operador', INFORMAR_OPERADOR.value);
@@ -231,6 +241,7 @@ CONFIRMAR_DADOS.addEventListener('click', () => {
     LISTA_NAVEGACAO[0].style.display = 'flex';
     LISTA_NAVEGACAO[1].style.display = 'flex';
     LISTA_NAVEGACAO[2].style.display = 'flex';
+    ENCERRAR.style.display = 'block';
 })
 
 const CONFIRMACAO_VEICULO = document.getElementById('confirmacaoVeiculo');
