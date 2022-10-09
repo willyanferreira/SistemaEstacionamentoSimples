@@ -56,7 +56,7 @@ ul#navegacao li span{
 /* MAIN */
 main{
     display: flex;
-    min-height: 300px;
+    height: 100%;
     position: relative;
     justify-content: center;
     align-items: center;
