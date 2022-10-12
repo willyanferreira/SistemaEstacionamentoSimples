@@ -1,5 +1,6 @@
 const PLACA = document.getElementById("cadastrar");
 const PLACAS = [];
+const HORARIOS = [];
 const LISTAR_PLACAS = document.getElementById("exibirVeiculos");
 
 // RECUPERANDO OS INTENS DA NAVEGAÇÃO
@@ -30,20 +31,25 @@ if (localStorage.length == 2) {
     LISTA_NAVEGACAO[2].style.display = 'none';
     ENCERRAR.style.display = 'none';
     localStorage.setItem("placas", PLACAS);
+    localStorage.setItem("horarios", HORARIOS);
     localStorage.removeItem("placas", PLACAS[0]);
+    localStorage.removeItem("horarios", HORARIOS[0]);
     DADOS_OPERACAO.style.display = 'block';
 } else if (localStorage.getItem("placas", PLACAS) == '') {
     alert(`Bem vindo de volta ${localStorage.getItem('operador')}`)
     OPERADOR.innerHTML = localStorage.getItem('operador');
     TARIFA.innerHTML = localStorage.getItem('tarifa');
     localStorage.removeItem("placas", PLACAS[0]);
+    localStorage.removeItem("horarios", HORARIOS[0]);
 } else {
     alert(`Bem vindo de volta ${localStorage.getItem('operador')}`)
     OPERADOR.innerHTML = localStorage.getItem('operador');
     TARIFA.innerHTML = localStorage.getItem('tarifa');
     const RECUPERANDo_PLACAS = localStorage.placas.split(',');
+    const RECUPERANDo_HORARIOS = localStorage.horarios.split(',');
     for (let x = 0; x < RECUPERANDo_PLACAS.length; x++) {
         PLACAS[x] = RECUPERANDo_PLACAS[x];
+        HORARIOS[x] = RECUPERANDo_HORARIOS[x];
     }
 }
 
@@ -76,7 +82,9 @@ function CadastrarVeiculo() {
         MSG_SECTION_CADASTRAR.innerHTML = 'Placa inválida';
     } else {
         PLACAS.push(PLACA.value.toUpperCase());
+        HORARIOS.push(new Date().toLocaleTimeString());
         localStorage.setItem('placas', PLACAS);
+        localStorage.setItem('horarios', HORARIOS);
         PLACA.value = "";
         MSG_SECTION_CADASTRAR.style.display = 'block';
         MSG_SECTION_CADASTRAR.style.color = 'green';
@@ -89,8 +97,8 @@ function CadastrarVeiculo() {
 
 function ExibirVeiculos() {
     LISTAR_PLACAS.innerHTML = '';
-    for (let x = 0; x < PLACAS.sort().length; x++) {
-        LISTAR_PLACAS.innerHTML += `<li>${PLACAS[x]}</li>`;
+    for (let x = 0; x < PLACAS.length; x++) {
+        LISTAR_PLACAS.innerHTML += `<li>${PLACAS[x]} - ${HORARIOS[x]}</li>`;
     }
     // LISTAR_PLACAS.style.display = 'block';
 }
@@ -142,7 +150,7 @@ function ProcurarVeiculo() {
         DIV2ETAPA.style.color = 'black';
 
     }
-    return REMOVER_VEICULOS.value;
+    // return REMOVER_VEICULOS.value;
     setTimeout(removeAvisoSpan, 2000);
 }
 
@@ -247,9 +255,13 @@ const AVANCAR = document.getElementById('avancar').addEventListener('click', () 
 LIBERAR.addEventListener('click', () => {
     const DELETAR_INDEX = PLACAS.indexOf(REMOVER_VEICULOS.value.toUpperCase());
     delete PLACAS[DELETAR_INDEX];
+    delete HORARIOS[DELETAR_INDEX];
     PLACAS[DELETAR_INDEX] = PLACAS[0];
+    HORARIOS[DELETAR_INDEX] = HORARIOS[0];
     PLACAS.shift();
+    HORARIOS.shift();
     localStorage.setItem('placas', PLACAS);
+    localStorage.setItem('horarios', HORARIOS);
     REMOVER_VEICULOS.value = "";
     MSG_LIBERADO.style.display = 'block';
     MSG_LIBERADO.style.color = 'green';
