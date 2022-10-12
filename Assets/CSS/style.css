@@ -232,7 +232,7 @@ div#etapa2 button:active, div#etapa3 button:active{
 section#informaNomeTarifa{
     text-align: center;
     display: none;
-    font-size: 20px;
+    font-size: 30px;
     position: relative;
 }
 section#informaNomeTarifa div{
@@ -243,11 +243,12 @@ section#informaNomeTarifa label{
     text-align: left;
     padding-bottom: 2px;
     padding-top: 5px;
-    font-size: 12px;
+    font-size: 20px;
 }
 section#informaNomeTarifa input{
     text-align: center;
     outline-color: #1E90FF;
+    height: 30px;
 }
 section#informaNomeTarifa button{
     background-color: #1E90FF;
@@ -259,6 +260,7 @@ section#informaNomeTarifa button{
     border-radius: 3px;
     outline: none;
     color: #fff;
+    height: 30px;
 }
 section#informaNomeTarifa button:hover{
     background-color: #000080;
