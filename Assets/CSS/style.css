@@ -234,6 +234,8 @@ section#informaNomeTarifa{
     display: none;
     font-size: 30px;
     position: relative;
+    height: 220px;
+    width: 220px;
 }
 section#informaNomeTarifa div{
     display: flex;
@@ -249,12 +251,15 @@ section#informaNomeTarifa input{
     text-align: center;
     outline-color: #1E90FF;
     height: 30px;
+    border: 1px solid #cecece;
+    border-radius: 2px;
 }
 section#informaNomeTarifa button{
     background-color: #1E90FF;
     margin-top: 7px;
     position: absolute;
     right: 0;
+    bottom: 0;
     padding: 3px;
     border: 1px solid #000080;
     border-radius: 3px;
