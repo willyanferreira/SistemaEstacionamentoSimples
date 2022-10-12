@@ -56,11 +56,17 @@ if (localStorage.length == 2) {
 const MSG_SECTION_CADASTRAR = document.getElementById('msgCadastrar');
 const MSG_SECTION_LIBERAR = document.getElementById('msgLiberar');
 const MSG_LIBERADO = document.getElementById('msgLiberado');
+const MSG_OPERADOR_TARIFA = document.getElementById('msgOperadorTarifa');
 
 function removeAvisoSpan() {
     MSG_SECTION_CADASTRAR.style.display = 'none';
     MSG_SECTION_LIBERAR.style.display = 'none';
     MSG_LIBERADO.style.display = 'none';
+    MSG_OPERADOR_TARIFA.style.display = 'none';
+    INFORMAR_OPERADOR.style.boxShadow = 'none';
+    INFORMAR_OPERADOR.style.border = '1px solid #cecece';
+    INFORMAR_TARIFA.style.boxShadow = 'none';
+    INFORMAR_TARIFA.style.border = '1px solid #cecece';
 }
 
 function CadastrarVeiculo() {
@@ -224,15 +230,44 @@ ENCERRAR.addEventListener('click', () => {
 
 // RECUPERANDO OPERADOR E TARIFA
 CONFIRMAR_DADOS.addEventListener('click', () => {
-    localStorage.setItem('operador', INFORMAR_OPERADOR.value);
-    localStorage.setItem('tarifa', INFORMAR_TARIFA.value);
-    DADOS_OPERACAO.style.display = 'none';
-    OPERADOR.innerHTML = localStorage.getItem('operador');
-    TARIFA.innerHTML = localStorage.getItem('tarifa');
-    LISTA_NAVEGACAO[0].style.display = 'flex';
-    LISTA_NAVEGACAO[1].style.display = 'flex';
-    LISTA_NAVEGACAO[2].style.display = 'flex';
-    ENCERRAR.style.display = 'block';
+    if (INFORMAR_OPERADOR.value == '' && INFORMAR_TARIFA.value == '') {
+        INFORMAR_OPERADOR.style.boxShadow = '0px 0px 10px red';
+        INFORMAR_OPERADOR.style.border = '1px solid red';
+        INFORMAR_TARIFA.style.boxShadow = '0px 0px 10px red';
+        INFORMAR_TARIFA.style.border = '1px solid red';
+        MSG_OPERADOR_TARIFA.style.display = 'block';
+        MSG_OPERADOR_TARIFA.style.color = 'red';
+        MSG_OPERADOR_TARIFA.style.fontSize = '13px';
+        MSG_OPERADOR_TARIFA.style.margin = '10px 0 10px 0';
+        MSG_OPERADOR_TARIFA.innerHTML = 'Informe o nome do operador e tarifa';
+    }else if(INFORMAR_OPERADOR.value == ''){
+        INFORMAR_OPERADOR.style.boxShadow = '0px 0px 10px red';
+        INFORMAR_OPERADOR.style.border = '1px solid red';
+        MSG_OPERADOR_TARIFA.style.display = 'block';
+        MSG_OPERADOR_TARIFA.style.color = 'red';
+        MSG_OPERADOR_TARIFA.style.fontSize = '13px';
+        MSG_OPERADOR_TARIFA.style.margin = '10px 0 10px 0';
+        MSG_OPERADOR_TARIFA.innerHTML = 'Informe o nome do operador';
+    }else if(INFORMAR_TARIFA.value == ''){
+        INFORMAR_TARIFA.style.boxShadow = '0px 0px 10px red';
+        INFORMAR_TARIFA.style.border = '1px solid red';
+        MSG_OPERADOR_TARIFA.style.display = 'block';
+        MSG_OPERADOR_TARIFA.style.color = 'red';
+        MSG_OPERADOR_TARIFA.style.fontSize = '13px';
+        MSG_OPERADOR_TARIFA.style.margin = '10px 0 10px 0';
+        MSG_OPERADOR_TARIFA.innerHTML = 'Informe a tarifa';
+    } else {
+        localStorage.setItem('operador', INFORMAR_OPERADOR.value);
+        localStorage.setItem('tarifa', INFORMAR_TARIFA.value);
+        DADOS_OPERACAO.style.display = 'none';
+        OPERADOR.innerHTML = localStorage.getItem('operador');
+        TARIFA.innerHTML = localStorage.getItem('tarifa');
+        LISTA_NAVEGACAO[0].style.display = 'flex';
+        LISTA_NAVEGACAO[1].style.display = 'flex';
+        LISTA_NAVEGACAO[2].style.display = 'flex';
+        ENCERRAR.style.display = 'block';
+    }
+    setTimeout(removeAvisoSpan, 2000);
 })
 
 const CONFIRMACAO_VEICULO = document.getElementById('confirmacaoVeiculo');
