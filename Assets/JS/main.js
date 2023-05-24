@@ -1,3 +1,5 @@
+"use strict";
+
 const PLACA = document.getElementById("cadastrar");
 const PLACAS = [];
 const HORARIOS = [];
